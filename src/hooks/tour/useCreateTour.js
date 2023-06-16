@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useSocket from "./useSocket";
-import { STATUS } from "../constant/status";
+import useSocket from "../useSocket";
+import { STATUS } from "../../constant/status";
 
 export default function useCreateTour() {
 	const [data, setData] = useState(null);

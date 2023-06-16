@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useSocket from "./useSocket";
+import useSocket from "../useSocket";
 
 export default function useTouristRoute({ route, keyword }) {
 	const [routes, setRoutes] = useState([]);
