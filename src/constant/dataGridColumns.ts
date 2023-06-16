@@ -1,5 +1,7 @@
 import moment from "moment";
 
+import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+
 export const TOURIST_ROUTE_COLUMN = [
 	{
 		field: "_id",
@@ -36,7 +38,7 @@ export const TOURIST_ROUTE_COLUMN = [
 	},
 ];
 
-export const TOUR_COLUMN = [
+export const TOUR_COLUMN: GridColDef[] = [
 	{
 		field: "_id",
 		headerName: "ID",
@@ -58,16 +60,16 @@ export const TOUR_COLUMN = [
 		width: 250,
 	},
 	{
-		field: "route",
-		headerName: "Route",
-		valueGetter: (param) => param.row.route.join(" - "),
-		width: 250,
+		field: "customer",
+		headerName: "Tickets",
+		width: 150,
+		description: "Total ticket",
 	},
 	{
-		field: "createdAt",
-		headerName: "Created at",
+		field: "updatedAt",
+		headerName: "Updated at",
 		width: 280,
 		valueGetter: (param) =>
-			moment(param.row.createdAt).format("DD MMMM YYYY, h:mm:ss a"),
+			moment(param.row.updatedAt).format("DD MMMM YYYY, h:mm:ss a"),
 	},
 ];
