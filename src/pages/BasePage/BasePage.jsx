@@ -61,7 +61,7 @@ export default function BasePage() {
                 setLoading(false);
             }
         }
-    }, [socket]);
+    }, [socket, location.pathname]);
 
     useCallAPIToast({
         status: socketStatus,
@@ -98,12 +98,10 @@ export default function BasePage() {
             pathname: location.pathname,
         })
     ) {
-        console.log('navigate to auth');
         return <RegisteringCompany />;
     }
 
     if (loading) {
-        console.log('navigate to auth');
         return <Loading />;
     }
 

@@ -9,6 +9,10 @@ import COLORS from '../../constant/color';
 export default function PageTitle({ children }) {
     const navigate = useNavigate();
 
+    const onPressBack = () => {
+        navigate(-1);
+    };
+
     return (
         <div className={styles.container}>
             {/* <BACK_ICON fill="#00171F" /> */}
@@ -22,7 +26,9 @@ export default function PageTitle({ children }) {
 			>
 				Back
 			</ImageButton> */}
-            <a href="">{"< Back"}</a>
+            <div data-href="back" role="button" onClick={onPressBack}>
+                {'< Back'}
+            </div>
             <h1 className={styles.container}>{children}</h1>
         </div>
     );

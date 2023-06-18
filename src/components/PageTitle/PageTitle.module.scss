@@ -1,23 +1,26 @@
 .container {
-   display: flex;
-   // flex-direction: column;
-   align-items: center;
-   gap: 50px;
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    gap: 50px;
 
-   svg {
-      transform: rotate(180deg);
-   }
+    svg {
+        transform: rotate(180deg);
+    }
 
-	h1 {
-		font-size: 2.1rem;
-		font-weight: 700;
-      margin: 0 !important;
-	}
+    h1 {
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin: 0 !important;
+    }
 
-   a {
-   font-size: 1.1rem;
-      color: black;
-      margin-bottom: -10px;
-   }
+    div[data-href='back'] {
+        font-size: 1.1rem;
+        color: black;
+        margin-bottom: -10px;
+        cursor: pointer;
+        &:hover {
+            color: var(--primary);
+        }
+    }
 }
-

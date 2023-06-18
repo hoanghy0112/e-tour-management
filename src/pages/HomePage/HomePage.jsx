@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Card from '@/components/Card/Card';
 import ImageButton from '@/components/ImageButton/ImageButton';
@@ -42,6 +42,9 @@ export default function HomePage() {
         socket && socket.disconnect();
         setSocket(null);
         dispatch(afterSignOut());
+        if (window) {
+            window.location.reload(false);
+        }
     };
 
     return (
