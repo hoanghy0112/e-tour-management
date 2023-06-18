@@ -9,6 +9,7 @@ import EditTourModal, {
 	useEditTourModalState,
 } from "../../components/EditTourModal/EditTourModal";
 import moment from "moment";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function DetailTourPage() {
 	const { id } = useParams();
@@ -21,7 +22,9 @@ export default function DetailTourPage() {
 	return (
 		<>
 			<div className={styles.container}>
-				<h1 className={styles.pageTitle}>Tour detail</h1>
+				<div className={styles.pageTitle}>
+					<PageTitle>Tour detail</PageTitle>
+				</div>
 				<div className={styles.header}>
 					{data?.image ? (
 						<img src={`${API_ENDPOINT.IMAGE}/${data.image}`} />
