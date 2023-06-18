@@ -20,6 +20,9 @@ import SocketContext from '@/contexts/SocketContext';
 import { useDispatch } from 'react-redux';
 import { afterSignOut } from '@/features/staffSlice';
 import { API_ENDPOINT } from '@/constant/api';
+import EditCompanyModal, {
+    useEditCompanyModalState,
+} from '@/components/EditCompanyModal/EditCompanyModal';
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -28,6 +31,9 @@ export default function HomePage() {
     const { data, isError, error } = useStaffInformation();
     const { data: companyData, companyIsError, companyError } = useCompanyInformation();
     const { socket, setSocket } = useContext(SocketContext);
+
+    const { modalState: editCompanyModalState, openModal: openEditCompanyModal } =
+        useEditCompanyModalState(companyData);
 
     useEffect(() => {
         if (authenticationState == AUTHENTICATION_STATE.UNAUTHENTICATED)
@@ -121,7 +127,7 @@ export default function HomePage() {
                                 </div>
                                 <p className={styles.title}>Preview images</p>
                                 <div className={styles.images}>
-                                    {companyData.previewImages.map((image) => (
+                                    {(companyData?.previewImages || []).map((image) => (
                                         <img key={image} src={`${API_ENDPOINT.IMAGE}/${image}`} />
                                     ))}
                                 </div>
@@ -131,6 +137,7 @@ export default function HomePage() {
                                     color={COLORS.editBackground}
                                     backgroundColor={COLORS.lightEditBackground}
                                     icon={EDIT_ICON}
+                                    onClick={() => openEditCompanyModal(companyData)}
                                 >
                                     Edit company
                                 </ImageButton>
@@ -144,6 +151,7 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
+                <EditCompanyModal {...editCompanyModalState} />
             </div>
         </>
     );
