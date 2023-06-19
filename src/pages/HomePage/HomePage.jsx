@@ -23,6 +23,7 @@ import { API_ENDPOINT } from '@/constant/api';
 import EditCompanyModal, {
     useEditCompanyModalState,
 } from '@/components/EditCompanyModal/EditCompanyModal';
+import AddStaffModal, { useAddStaffState } from '@/components/AddStaffModal/AddStaffModal';
 
 export default function HomePage() {
     const navigate = useNavigate();
@@ -32,6 +33,7 @@ export default function HomePage() {
     const { data: companyData, companyIsError, companyError } = useCompanyInformation();
     const { socket, setSocket } = useContext(SocketContext);
 
+    const { modalState: addStaffModalState, openModal: openAddStaffModal } = useAddStaffState();
     const { modalState: editCompanyModalState, openModal: openEditCompanyModal } =
         useEditCompanyModalState(companyData);
 
@@ -144,6 +146,7 @@ export default function HomePage() {
                                 <ImageButton
                                     color={COLORS.greenPastelPrimary}
                                     backgroundColor={COLORS.greenPastelSecondary}
+                                    onClick={openAddStaffModal}
                                 >
                                     Add new staff
                                 </ImageButton>
@@ -151,7 +154,9 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
+
                 <EditCompanyModal {...editCompanyModalState} />
+                <AddStaffModal {...addStaffModalState} />
             </div>
         </>
     );
