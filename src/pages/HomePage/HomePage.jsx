@@ -42,12 +42,15 @@ export default function HomePage() {
     const { socket, setSocket } = useContext(SocketContext);
 
     const { modalState: addStaffModalState, openModal: openAddStaffModal } = useAddStaffState({
-        onUpdate: (newData) => {
-            setStaffList((prev) =>
-                [...prev.filter((d) => d._id != newData._id), newData].sort(
-                    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-                )
-            );
+        onUpdate: (newData, type) => {
+            if (type == 'delete') {
+                setStaffList((prev) => [...prev.filter((d) => d._id != newData._id)]);
+            } else
+                setStaffList((prev) =>
+                    [...prev.filter((d) => d._id != newData._id), newData].sort(
+                        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+                    )
+                );
         },
     });
     const { modalState: editCompanyModalState, openModal: openEditCompanyModal } =
