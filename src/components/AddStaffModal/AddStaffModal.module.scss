@@ -12,6 +12,8 @@
     & > h1 {
         font-size: 1.7rem;
         font-weight: 400;
+        margin-bottom: -20px;
+        margin-left: -15px;
     }
 
     h2 {
@@ -27,7 +29,17 @@
             height: 100px;
         }
 
+        .title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #003459;
+            margin-top: 25px;
+            margin-left: -15px;
+            margin-bottom: -5px;
+        }
+
         .imagePreview {
+            border-radius: 10px;
             img {
                 width: 100%;
             }
@@ -35,6 +47,11 @@
 
         .select {
             color: black;
+        }
+
+        .error {
+            margin-top: -10px;
+            color: rgb(227, 43, 43);
         }
     }
 
