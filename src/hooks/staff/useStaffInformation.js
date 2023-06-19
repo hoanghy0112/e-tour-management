@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import usePersistentState from './usePersistentState';
-import useSocket from './useSocket';
+import usePersistentState from '../usePersistentState';
+import useSocket from '../useSocket';
 
 export default function useStaffInformation() {
     const [staffInfo, setStaffInfo] = usePersistentState('staff-info', null);
